@@ -190,6 +190,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\LeaderboardController.cs" />
+    <Compile Include="Services\LeaderboardService.cs" />
+    <Compile Include="Models\UsersWithPointsViewModel.cs" />
     <Compile Include="Controllers\WinnerBetsController.cs" />
     <Compile Include="Migrations\201806101906303_AddAPILink.cs" />
     <Compile Include="Migrations\201806101906303_AddAPILink.Designer.cs">
@@ -307,10 +310,9 @@
     <Content Include="Views\Shared\_MatchPartial.cshtml" />
     <Content Include="Views\Shared\_BetPartial.cshtml" />
     <Content Include="Views\Shared\_NewBetPartial.cshtml" />
-    <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\WinnerBets\Index.cshtml" />
     <Content Include="Views\Shared\_WinnerBetPartial.cshtml" />
-    <Content Include="Views\Shared\View1.cshtml" />
+    <Content Include="Views\Leaderboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
