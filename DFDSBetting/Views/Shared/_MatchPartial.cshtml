@@ -1,3 +1,8 @@
 ﻿@model DFDSBetting.Models.MatchViewModel
 
-(@Model.BeginDate)   @Model.HomeTeamName [@Model.HomeTeamScore] - [@Model.AwayTeamScore] @Model.AwayTeamName
+
+<div class="card-header"> [FLAG] @Model.HomeTeamName - @Model.AwayTeamName [FLAG] </div>
+<div class="card-body">
+    <h4 class="card-title"> @Model.HomeTeamScore - @Model.AwayTeamScore</h4>
+    <p class="card-text">@Model.BeginDate</p>
+</div>

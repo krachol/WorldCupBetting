@@ -1,31 +1,65 @@
 ﻿@model DFDSBetting.Models.NewScoreBetViewModel
 
-@using (Html.BeginForm("Create", "ScoreBets")) 
+@using (Html.BeginForm("Create", "ScoreBets"))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-inline">
-    @Html.HiddenFor(model => model.MatchId)
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ScoreHome, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ScoreHome, "", new { @class = "text-danger" })
+    @*<div class="form-inline text-center">
+        @Html.HiddenFor(model => model.MatchId)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScoreHome, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ScoreHome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScoreAway, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ScoreAway, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
+    <br />
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ScoreAway, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ScoreAway, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="New Bet" class="btn btn-danger" />
+            </div>
         </div>
+        <hr />
+    </div>*@
+
+
+    <div class="card-body">
+
+        @Html.HiddenFor(model => model.MatchId)
+
+        <div class="row text-center">
+            <div class="col">
+                <div class="form-group">
+
+                    @Html.EditorFor(model => model.ScoreHome, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ScoreHome, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+
+                    @Html.EditorFor(model => model.ScoreAway, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ScoreAway, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+        </div>
+        <hr />
+        <input type="submit" value="New Bet" class="btn btn-danger" />
+
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="New Bet" class="btn btn-default" />
-        </div>
-    </div>
-    <hr />
-</div>
 }

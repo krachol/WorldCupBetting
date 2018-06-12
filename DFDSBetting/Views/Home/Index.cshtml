@@ -3,6 +3,22 @@
 }
 
 <div class="jumbotron">
-    <h1>DFDS World Cup 2018</h1>
-    <p class="lead">Website for betting the matches in DFDS Polska</p>
+    <h1 class="display-3">DFDS World Cup 2018</h1>
+    <p class="lead">Welcome to unofficial DFDS Polska website for betting the matches. </p>
+    <hr class="my-4">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <p>Start betting scores on each matches.</p>
+            <p class="lead">
+                @Html.ActionLink("Start betting!", "Index", "ScoreBets", null, new { @class = "btn btn-primary btn-lg" })
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <p>Predict the winner of the tournament. The sooner the better!</p>
+            <p class="lead">
+                @Html.ActionLink("Pick World Cup Winner!", "Index", "ScoreBets", null, new { @class = "btn btn-secondary btn-lg" })
+            </p>
+        </div>
+    </div>
 </div>
