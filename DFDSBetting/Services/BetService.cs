@@ -23,6 +23,49 @@ namespace DFDSBetting.Services
             _teamService = new TeamService(_context);
         }
 
+        internal async Task<List<WinnerBetIndexViewModel>> GetListOfTeamsWithBetsAsync()
+        {
+            var teams = await _teamService.GetAllAsync();
+            var loggedInUser = await _userService.GetLoggedInUserAsync();
+
+            var WinnerBetList = new List<WinnerBetIndexViewModel>();
+
+            foreach (var team in teams)
+            {
+                WinnerBetList.Add(new WinnerBetIndexViewModel
+                {
+                    Team = new TeamViewModel
+                    {
+                        Id = team.Id,
+                        Name = team.Name
+                    },
+                    WinnerBet = await GetWinnerBetForATeamAsync(team)
+                });
+            }
+            return WinnerBetList;
+        }
+
+        public async Task<WinnerBetViewModel> GetWinnerBetForATeamAsync(Team team)
+        {
+            var loggedInUser = await _userService.GetLoggedInUserAsync();
+            var bet = await _context.WinnerBets.FirstOrDefaultAsync(b => b.Team.Id == team.Id && loggedInUser.Id == b.Placer.Id);
+
+            if (bet == null)
+            {
+                return new WinnerBetViewModel
+                {
+                    Id = Guid.Empty,
+                    TeamId = team.Id
+                };
+            }
+
+            return new WinnerBetViewModel
+            {
+                Id = bet.Id,
+                TeamId = team.Id
+            };
+        }
+
         public async Task MakeNewScoreBet(NewScoreBetViewModel newBet) 
         {
             var bet = new ScoreBet
@@ -40,6 +83,11 @@ namespace DFDSBetting.Services
 
         public async Task MakeNewWinnerBet(NewWinnerBetViewModel newBet)
         {
+            var loggedInUser = await _userService.GetLoggedInUserAsync();
+            _context.WinnerBets.RemoveRange(_context.WinnerBets.Where(b => b.Placer.Id == loggedInUser.Id));
+
+            await _context.SaveChangesAsync();
+
             var bet = new WinnerBet
             {
                 Id = Guid.NewGuid(),
@@ -103,7 +151,7 @@ namespace DFDSBetting.Services
             };
         }
 
-        internal async Task<List<BetIndexViewModel>> GetListOfMatchesWithBetsAsync()
+        internal async Task<List<ScoreBetIndexViewModel>> GetListOfMatchesWithBetsAsync()
         {
             var matches = await _context.Matches
                 .Where(m => m.AwayTeam != null && m.HomeTeam != null)
@@ -112,11 +160,11 @@ namespace DFDSBetting.Services
                 .Include(m => m.AwayTeam)
                 .ToListAsync();
 
-            var BetIndexList = new List<BetIndexViewModel>();
+            var BetIndexList = new List<ScoreBetIndexViewModel>();
             foreach (var match in matches)
             {
                 
-                BetIndexList.Add(new BetIndexViewModel
+                BetIndexList.Add(new ScoreBetIndexViewModel
                 {
                     Match = _matchService.GetMatchViewModel(match),
                     ScoreBet =  await GetScoreBetViewModelForAMatchAsync(match)

@@ -1,0 +1,20 @@
+﻿@using DFDSBetting.Models
+@model List<DFDSBetting.Models.WinnerBetIndexViewModel>
+
+<ul>
+    @foreach (var pair in Model)
+    {
+        <li>
+            @pair.Team.Name -
+            @if (pair.WinnerBet.Id == Guid.Empty)
+            {
+                @Html.Partial("_WinnerBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
+            } else
+            {
+                <div>Your current bet</div>
+
+            }
+        </li>
+    }
+</ul>
+

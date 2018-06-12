@@ -1,0 +1,16 @@
+﻿@model DFDSBetting.Models.NewWinnerBetViewModel
+
+@using (Html.BeginForm("MakeBet", "WinnerBets")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(m => m.TeamId)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

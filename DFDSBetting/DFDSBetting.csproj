@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\WinnerBetsController.cs" />
     <Compile Include="Migrations\201806101906303_AddAPILink.cs" />
     <Compile Include="Migrations\201806101906303_AddAPILink.Designer.cs">
       <DependentUpon>201806101906303_AddAPILink.cs</DependentUpon>
@@ -202,8 +203,16 @@
     <Compile Include="Migrations\201806112153257_ChangeType.Designer.cs">
       <DependentUpon>201806112153257_ChangeType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BetIndexViewModel.cs" />
-    <Compile Include="Controllers\BetsController.cs" />
+    <Compile Include="Migrations\201806121749023_RemovePlaceFromWinner.cs" />
+    <Compile Include="Migrations\201806121749023_RemovePlaceFromWinner.Designer.cs">
+      <DependentUpon>201806121749023_RemovePlaceFromWinner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806122018221_RemovePlaceFromWinner1.cs" />
+    <Compile Include="Migrations\201806122018221_RemovePlaceFromWinner1.Designer.cs">
+      <DependentUpon>201806122018221_RemovePlaceFromWinner1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScoreBetIndexViewModel.cs" />
+    <Compile Include="Controllers\ScoreBetsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,7 +236,9 @@
     <Compile Include="Models\NewBetViewModel.cs" />
     <Compile Include="Models\ScoreBet.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamViewModel.cs" />
     <Compile Include="Models\WinnerBet.cs" />
+    <Compile Include="Models\WinnerBetIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BetService.cs" />
     <Compile Include="Services\MatchService.cs" />
@@ -295,6 +306,9 @@
     <Content Include="Views\Shared\_BetPartial.cshtml" />
     <Content Include="Views\Shared\_NewBetPartial.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\WinnerBets\Index.cshtml" />
+    <Content Include="Views\Shared\_WinnerBetPartial.cshtml" />
+    <Content Include="Views\Shared\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +342,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806112153257_ChangeType.resx">
       <DependentUpon>201806112153257_ChangeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806121749023_RemovePlaceFromWinner.resx">
+      <DependentUpon>201806121749023_RemovePlaceFromWinner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806122018221_RemovePlaceFromWinner1.resx">
+      <DependentUpon>201806122018221_RemovePlaceFromWinner1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

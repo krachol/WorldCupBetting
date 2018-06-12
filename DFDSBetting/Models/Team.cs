@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 
 namespace DFDSBetting.Models
 {
@@ -8,5 +9,7 @@ namespace DFDSBetting.Models
         public string Name { get; set; }
         public Char Group { get; set; }
         public string ApiLink { get; set; }
+        public string FlagUrl { get; set; }
+        public DbSet<WinnerBet> WinnerBets { get; set; }
     }
 }
