@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 
 namespace DFDSBetting.Services
 {
@@ -37,7 +36,8 @@ namespace DFDSBetting.Services
                     Team = new TeamViewModel
                     {
                         Id = team.Id,
-                        Name = team.Name
+                        Name = team.Name,
+                        FlagUrl = team.FlagUrl
                     },
                     WinnerBet = await GetWinnerBetForATeamAsync(team)
                 });
