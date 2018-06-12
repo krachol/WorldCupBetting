@@ -1,31 +1,39 @@
 ﻿@model DFDSBetting.Models.ScoreBetViewModel
 
-@using (Html.BeginForm("Update",  "ScoreBets"))
+@using (Html.BeginForm("Update", "ScoreBets"))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-inline">
+
+
+    <div class="card-body">
+
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.ScoreHome, new { htmlAttributes = new { min = 0, max = int.MaxValue , @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ScoreHome, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="row text-center">
+            <div class="col">
+                <div class="form-group">
 
-        <div class="form-group">
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.ScoreAway, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ScoreAway, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @Html.EditorFor(model => model.ScoreHome, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ScoreHome, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-3">
-                <input type="submit" value="Update bet" class="btn btn-default" />
+                </div>
             </div>
+
+            <div class="col">
+                <div class="form-group">
+
+                    @Html.EditorFor(model => model.ScoreAway, new { htmlAttributes = new { min = 0, max = int.MaxValue, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ScoreAway, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
         </div>
         <hr />
+        <input type="submit" value="Update bet" class="btn btn-primary" />
+
     </div>
+
+
+
 }

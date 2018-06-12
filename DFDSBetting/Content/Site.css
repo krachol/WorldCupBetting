@@ -1,12 +1,16 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 100px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.card-deck {
+    margin-bottom: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
