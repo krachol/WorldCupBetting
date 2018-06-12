@@ -1,7 +1,9 @@
 ﻿@model DFDSBetting.Models.MatchViewModel
 
 
-<div class="card-header"> [FLAG] @Model.HomeTeamName - @Model.AwayTeamName [FLAG] </div>
+<div class="card-header">
+ <img src="@Model.HomeTeamFlagUrl" style="height:20px; width: 40px" /> @Model.HomeTeamName - @Model.AwayTeamName <img src="@Model.AwayTeamFlagUrl" style="height:20px; width: 40px" /> 
+</div>
 <div class="card-body">
     <h4 class="card-title"> @Model.HomeTeamScore - @Model.AwayTeamScore</h4>
     <p class="card-text">@Model.BeginDate</p>

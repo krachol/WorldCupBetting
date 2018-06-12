@@ -31,7 +31,9 @@ namespace DFDSBetting.Services
                 HomeTeamScore = match.HomeTeamScore,
                 AwayTeamName = match.AwayTeam.Name,
                 AwayTeamScore = match.AwayTeamScore,
-                BeginDate = match.BeginDate
+                BeginDate = match.BeginDate,
+                HomeTeamFlagUrl = match.HomeTeam.FlagUrl,
+                AwayTeamFlagUrl = match.AwayTeam.FlagUrl,
             };
         }
     }

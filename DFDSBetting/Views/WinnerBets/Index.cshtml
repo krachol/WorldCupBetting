@@ -5,7 +5,7 @@
     @foreach (var pair in Model)
     {
         <li>
-            @pair.Team.Name -
+            <img src="@pair.Team.FlagUrl" style="height: 20px; width: 40px;" /> @pair.Team.Name -
             @if (pair.WinnerBet.Id == Guid.Empty)
             {
                 @Html.Partial("_WinnerBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
