@@ -1,0 +1,27 @@
+﻿@using DFDSBetting.Models
+@model List<DFDSBetting.Models.BetIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Bets</h2>
+
+<ul>
+    @foreach (var pair in Model)
+    {
+        <li>
+            <div>
+            @Html.Partial("_MatchPartial", pair.Match)
+                </div>
+            @if (pair.ScoreBet == null)
+            {
+                @Html.Partial("_NewBetPartial", new NewScoreBetViewModel() { MatchId = pair.Match.Id })
+            }
+            else
+            {
+                @Html.Partial("_BetPartial", pair.ScoreBet)
+            }
+        </li>
+    }
+</ul>
