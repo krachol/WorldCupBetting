@@ -1,21 +1,27 @@
 ﻿@using DFDSBetting.Models
 @model List<DFDSBetting.Models.WinnerBetIndexViewModel>
 
-<ul>
+<ul class="row">
     @foreach (var pair in Model)
     {
-        <li>
-            <img src="@pair.Team.FlagUrl" style="height: 20px; width: 40px;" /> @pair.Team.Name -
-            @if (pair.WinnerBet.Id == Guid.Empty)
-            {
-                @Html.Partial("_WinnerBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
-            } else
-            {
-                <div>Your current bet</div>
+        <li class="col-lg-3" style="list-style-type:none;">
+            <div class="card bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-header"><img src="@pair.Team.FlagUrl" style="height: 20px; width: 40px;" /> @pair.Team.Name</div>
+
+                @if (pair.WinnerBet.Id == Guid.Empty)
+                {
+                    @Html.Partial("_WinnerBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
+                }
+                else
+                {
+                    @Html.Partial("_CurrentBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
 
             }
             @pair.WinnerBet.Value
+
+            </div>
         </li>
     }
 </ul>
+
 

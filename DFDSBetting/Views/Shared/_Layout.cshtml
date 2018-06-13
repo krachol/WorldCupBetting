@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container">
-            @Html.ActionLink("DFDS World Cup 2018", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <strong>@Html.ActionLink("DFDS World Cup 2018", "Index", "Home", new { area = "" }, new { @class = "navbar-brand btn btn-primary" }) </strong>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,24 +21,27 @@
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Bets", "Index", "ScoreBets", null, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Winners pool", "Index", "WinnerBets", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Leaderboard", "Index", "Leaderboard", null, new {@class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Leaderboard", "Index", "Leaderboard", null, new { @class = "nav-link" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - DFDS World Cup 2018</p>
-            <p>Created by Andrzej Bogacki & Mateusz Krasicki</p>
-        </footer>
-    </div>
+    <div id="home">
+        <div class="container body-content">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - DFDS World Cup 2018</p>
+                <p>Created by Andrzej Bogacki & Mateusz Krasicki</p>
+            </footer>
+        </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
