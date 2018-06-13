@@ -11,14 +11,13 @@
                 @if (pair.WinnerBet.Id == Guid.Empty)
                 {
                     @Html.Partial("_WinnerBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
+                    <div class="card-header text-center"><strong>Potential points:</strong> @pair.WinnerBet.Value</div>
                 }
                 else
                 {
                     @Html.Partial("_CurrentBetPartial", new NewWinnerBetViewModel { TeamId = pair.WinnerBet.TeamId })
-
-            }
-            @pair.WinnerBet.Value
-
+                    <div class="card-header text-center"><strong>Actual points:</strong> @pair.WinnerBet.Value</div>
+                }
             </div>
         </li>
     }

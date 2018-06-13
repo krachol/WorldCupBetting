@@ -39,9 +39,10 @@ namespace DFDSBetting.Services
         {
             return await _context.ScoreBets
                 .Where(b => 
-                (b.ScoreAway > b.ScoreHome && b.Match.AwayTeamScore > b.Match.HomeTeamScore) 
+                ((b.ScoreAway > b.ScoreHome && b.Match.AwayTeamScore > b.Match.HomeTeamScore) 
                 || (b.ScoreAway < b.ScoreHome && b.Match.AwayTeamScore < b.Match.HomeTeamScore) 
-                || (b.ScoreAway == b.ScoreHome && b.Match.AwayTeamScore == b.Match.HomeTeamScore) 
+                || (b.ScoreAway == b.ScoreHome && b.Match.AwayTeamScore == b.Match.HomeTeamScore))
+                && b.Match.Began && b.Match.Finished
                 ).ToListAsync();
         }
 

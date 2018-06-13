@@ -325,6 +325,7 @@
     <Content Include="Views\WinnerBets\Index.cshtml" />
     <Content Include="Views\Shared\_WinnerBetPartial.cshtml" />
     <Content Include="Views\Leaderboard\Index.cshtml" />
+    <Content Include="Views\Shared\_CurrentBetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
