@@ -11,5 +11,6 @@ namespace DFDSBetting.Models
         public string ApiLink { get; set; }
         public string FlagUrl { get; set; }
         public DbSet<WinnerBet> WinnerBets { get; set; }
+        public bool IsChampion { get; set; }
     }
 }

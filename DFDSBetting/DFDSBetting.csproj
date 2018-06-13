@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentScheduler, Version=5.3.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.3.0\lib\net40\FluentScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -191,6 +194,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\LeaderboardController.cs" />
+    <Compile Include="Migrations\201806130719167_AddValueToWinnerBet.cs" />
+    <Compile Include="Migrations\201806130719167_AddValueToWinnerBet.Designer.cs">
+      <DependentUpon>201806130719167_AddValueToWinnerBet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806130729311_AddIsChampionToDatabase.cs" />
+    <Compile Include="Migrations\201806130729311_AddIsChampionToDatabase.Designer.cs">
+      <DependentUpon>201806130729311_AddIsChampionToDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\LeaderboardService.cs" />
     <Compile Include="Models\UsersWithPointsViewModel.cs" />
     <Compile Include="Controllers\WinnerBetsController.cs" />
@@ -247,6 +258,7 @@
     <Compile Include="Services\MatchService.cs" />
     <Compile Include="Models\NewWinnerBetViewModel.cs" />
     <Compile Include="Models\ScoreBetViewModel.cs" />
+    <Compile Include="Services\PointsService.cs" />
     <Compile Include="Services\TeamService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Models\WinnerBetViewModel.cs" />
@@ -352,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806122018221_RemovePlaceFromWinner1.resx">
       <DependentUpon>201806122018221_RemovePlaceFromWinner1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130719167_AddValueToWinnerBet.resx">
+      <DependentUpon>201806130719167_AddValueToWinnerBet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130729311_AddIsChampionToDatabase.resx">
+      <DependentUpon>201806130729311_AddIsChampionToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

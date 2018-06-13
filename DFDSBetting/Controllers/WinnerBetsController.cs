@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace DFDSBetting.Controllers
 {
+    [Authorize]
     public class WinnerBetsController : Controller
     {
         ApplicationDbContext _context;

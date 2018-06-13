@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace DFDSBetting.Controllers
 {
+    [Authorize]
     public class LeaderboardController : Controller
     {
         private ApplicationDbContext _context;

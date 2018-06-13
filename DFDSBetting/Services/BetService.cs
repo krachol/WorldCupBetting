@@ -55,14 +55,16 @@ namespace DFDSBetting.Services
                 return new WinnerBetViewModel
                 {
                     Id = Guid.Empty,
-                    TeamId = team.Id
+                    TeamId = team.Id,
+                    Value = await CalculateWinnerBetValueAsync(team.Id)
                 };
             }
 
             return new WinnerBetViewModel
             {
                 Id = bet.Id,
-                TeamId = team.Id
+                TeamId = team.Id,
+                Value = bet.Value
             };
         }
 
@@ -93,10 +95,18 @@ namespace DFDSBetting.Services
                 Id = Guid.NewGuid(),
                 Team = await _teamService.GetByIdAsync(newBet.TeamId),
                 Placer = await _userService.GetLoggedInUserAsync(),
+                Value = await CalculateWinnerBetValueAsync(newBet.TeamId)
             };
             _context.WinnerBets.Add(bet);
 
             await _context.SaveChangesAsync();
+        }
+
+        private async Task<int> CalculateWinnerBetValueAsync(Guid teamId)
+        { 
+            var matchCount = await _context.Matches.CountAsync(m => (m.HomeTeam.Id == teamId || m.AwayTeam.Id == teamId) && !m.Finished && !m.Began);
+
+            return (matchCount + 4) * 3;
         }
 
         public async Task UpdateScoreBet(ScoreBetViewModel scoreBet)

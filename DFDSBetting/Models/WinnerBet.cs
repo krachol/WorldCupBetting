@@ -15,5 +15,7 @@ namespace DFDSBetting.Models
         [Key]
         [Column(Order=2)]
         public Team Team { get; set; }
+
+        public int Value{ get; set; }
     }
 }

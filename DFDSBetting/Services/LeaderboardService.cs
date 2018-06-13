@@ -10,19 +10,27 @@ namespace DFDSBetting.Services
     internal class LeaderboardService
     {
         private ApplicationDbContext _context;
+        private PointsService _pointsService;
 
         public LeaderboardService(ApplicationDbContext context)
         {
             _context = context;
+            _pointsService = new PointsService(context);
         }
 
         internal async Task<List<UsersWithPointsViewModel>> GetUsersWithPointsAsync()
         {
-            return await _context.Users.Select(u => new UsersWithPointsViewModel
+            var users = await _context.Users.ToListAsync();
+            List<UsersWithPointsViewModel> list = new List<UsersWithPointsViewModel>();
+            foreach (var user in users)
             {
-                UserName = u.UserName,
-                Points = 0
-            }).ToListAsync();
+                list.Add(new UsersWithPointsViewModel
+                {
+                    UserName = user.UserName,
+                    Points = await _pointsService.GetPointsForUserAsync(user)
+                });
+            }
+            return list.OrderByDescending(u => u.Points).ToList();
         }
     }
 }
