@@ -1,12 +1,17 @@
 ﻿@using DFDSBetting.Models
 @model List<UsersWithPointsViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Leaderboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Leaderboard</h2>
-
+<p>Points are assigned as follows:
+    <ul>
+        <li>For every guessed score - 3 points</li>    
+        <li>For every predicted outcome - taken from your bet(ex. if you bet 3:1 - you bet for Home team to win) - 1 point</li>    
+        <li>For winner bet you get 3 points for every match that team has yet to play at the moment of betting. (The later you bet, the lower the score) </li>    
+    </ul></p>
 <table class="table table-hover">
     <thead>
         <tr>

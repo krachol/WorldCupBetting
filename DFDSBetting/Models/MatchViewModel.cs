@@ -12,5 +12,6 @@ namespace DFDSBetting.Models
         public int AwayTeamScore { get; set; }
         public string HomeTeamFlagUrl { get; set; }
         public string AwayTeamFlagUrl { get; set; }
+        public bool Began { get; set; }
     }
 }

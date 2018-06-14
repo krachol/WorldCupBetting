@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using DFDSBetting.Models;
 
@@ -34,6 +32,7 @@ namespace DFDSBetting.Services
                 BeginDate = match.BeginDate.AddHours(2),
                 HomeTeamFlagUrl = match.HomeTeam.FlagUrl,
                 AwayTeamFlagUrl = match.AwayTeam.FlagUrl,
+                Began = match.Began
             };
         }
     }

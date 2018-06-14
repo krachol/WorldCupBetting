@@ -2,7 +2,7 @@
 @model List<ScoreBetIndexViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Score bets";
 }
 
 <ul class="row" style="list-style-type:none;">
@@ -11,13 +11,23 @@
         <li class="col-md-6">
             <div class="card border-primary text-center" style="margin-bottom:10px;">
                 @Html.Partial("_MatchPartial", pair.Match)
-                @if (pair.ScoreBet == null)
+                @if (!pair.Match.Began)
                 {
-                    @Html.Partial("_NewBetPartial", new NewScoreBetViewModel() { MatchId = pair.Match.Id })
+                    if (pair.ScoreBet == null)
+                    {
+                        @Html.Partial("_NewBetPartial", new NewScoreBetViewModel() { MatchId = pair.Match.Id })
+                    }
+                    else
+                    {
+                        @Html.Partial("_BetPartial", pair.ScoreBet)
+                    }
                 }
                 else
                 {
-                    @Html.Partial("_BetPartial", pair.ScoreBet)
+                    <div class="card-header">
+                        <div class="text-center"><strong>Your bet</strong></div>
+                        <div class="text-center">@pair.ScoreBet.ScoreHome - @pair.ScoreBet.ScoreAway</div>
+                    </div>
                 }
             </div>
         </li>

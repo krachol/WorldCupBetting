@@ -1,5 +1,7 @@
 ﻿using DFDSBetting.Models;
 using DFDSBetting.Services;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -28,8 +30,9 @@ namespace DFDSBetting.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(NewScoreBetViewModel newScoreBetViewModel)
         {
-            if (!ModelState.IsValid)
-                return View("Index");
+            var matchBegan = (await _context.Matches.Where(m => m.Id == newScoreBetViewModel.MatchId).Select(m => m.Began).FirstOrDefaultAsync());
+            if (!ModelState.IsValid || matchBegan)
+                return RedirectToAction("Index");
 
             await _betService.MakeNewScoreBet(newScoreBetViewModel);
 
@@ -39,8 +42,9 @@ namespace DFDSBetting.Controllers
         [HttpPost]
         public async Task<ActionResult> Update(ScoreBetViewModel scoreBetViewModel)
         {
-            if (!ModelState.IsValid)
-                return View("Index", await _betService.GetListOfMatchesWithBetsAsync());
+            var matchBegan = (await _context.ScoreBets.Where(b => b.Id == scoreBetViewModel.Id).Select(b => b.Match.Began).FirstOrDefaultAsync());
+            if (!ModelState.IsValid || matchBegan)
+                return RedirectToAction("Index");
 
             await _betService.UpdateScoreBet(scoreBetViewModel);
 

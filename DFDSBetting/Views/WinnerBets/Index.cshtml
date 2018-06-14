@@ -1,6 +1,8 @@
 ﻿@using DFDSBetting.Models
 @model List<DFDSBetting.Models.WinnerBetIndexViewModel>
-
+@{ 
+    ViewBag.Title = "Winner bets";
+}
 <ul class="row">
     @foreach (var pair in Model)
     {
